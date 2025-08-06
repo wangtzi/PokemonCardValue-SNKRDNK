@@ -1,0 +1,19 @@
+# 敏感資訊
+.env
+cookies.pkl
+*.log
+
+# 本地端錯誤截圖
+*.png
+
+venv/
+
+.conda/
+
+# Python 快取檔案
+__pycache__/
+*.pyc
+
+# IDE 或編輯器產生的設定檔
+.idea/
+.vscode/

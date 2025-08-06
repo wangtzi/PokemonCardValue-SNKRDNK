@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜尋結果: {{ query }}</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f4f9; padding: 20px; }
+        h1, h2 { text-align: center; }
+        .results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; max-width: 1200px; margin: auto; }
+        .card { background-color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 15px; text-align: center; }
+        .card img { max-width: 100%; height: auto; border-radius: 4px; }
+        .card .price { font-size: 1.2em; font-weight: bold; color: #28a745; margin: 10px 0; }
+        .card .name { font-size: 0.9em; color: #333; height: 60px; }
+        .no-results { text-align: center; font-size: 1.2em; color: #777; }
+        a.back-link { display: block; text-align: center; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h1>搜尋結果: "{{ query }}"</h1>
+
+    {% if results %}
+        <div class="results-grid">
+            {% for card in results %}
+            <div class="card">
+                <img src="{{ card.image_url }}" alt="{{ card.name }}">
+                <p class="price">{{ card.price }}</p>
+                <p class="name">{{ card.name }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h2 class="no-results">😢 找不到任何結果，或是在抓取時發生錯誤。</h2>
+    {% endif %}
+
+    <a href="/" class="back-link">返回重新搜尋</a>
+</body>
+</html>
