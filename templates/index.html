@@ -17,6 +17,18 @@
             <input type="text" name="card_name" placeholder="輸入卡片名稱 (e.g., Pikachu)" required>
             <button type="submit">搜尋</button>
         </form>
+        <div class="history">
+            <h3>最近的搜尋紀錄</h3>
+            {% if history %}
+                <ul>
+                {% for record in history %}
+                    <li>{{ record['term'] }} - <small>{{ record['timestamp'] }}</small></li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>還沒有任何搜尋紀錄。</p>
+            {% endif %}
+        </div>
     </div>
 </body>
 </html>
